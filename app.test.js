@@ -20,17 +20,32 @@ describe('GET requests', () => {
 // TEST THE REST API ENDPOINT FOR POST
 describe('CREATE request', () => {
     
-    test('CREATE product test', async () => {
-	// TEST IN HERE
+    test('POST product/read endpoint, expect 202', async () => {
+        const res = await request(app).post('/product/create').send({
+            name: "house",
+            description: "brick",
+            price: 2.50
+        });
+        expect(res.statusCode).toBe(201);
     });
 
+    test('PUT bad endpoint, expect 404', async () => {
+        const res = await request(app).put('/badEndPoint')
+        expect(res.statusCode).toBe(404);
+    });
+      
 });
 
 // UNIT TEST THE PRODUCT BUILDER
-describe('Unit Tests', () => {
+describe('Unit Test', () => {
+    let testStub = { // Create an object to be the test stub to check against the builder
+        name: "garage",
+        description: "bike",
+        price: 999.99
+    };
 
     test('product object builder', () => {
-        // TEST IN HERE
+        expect(productBuilder("garage", "bike", 999.99)).toMatchObject(testStub); // validate productBuilder against the testStub variables
     });
 
 });
