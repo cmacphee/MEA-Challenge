@@ -12,3 +12,5 @@ CREATE To create the example product run the command:
 "curl -s -X PUT http://localhost:/product/update/ -H 'Content-type:application/json' -d '{"name":"updated product", "description":"its brand new", "price":99.99}'" DELETE To delete one of the products run the command:
 "curl -s -X DELETE http://localhost:/product/delete/" Testing To run tests, from the terminal run the command:
 $ npm test
+
+:-)
